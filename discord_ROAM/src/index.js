@@ -1,5 +1,6 @@
 require('dotenv').config(); // access the password env file
 const { Client, IntentsBitField} = require('discord.js');
+const eventHandler = require('./handlers/eventHandler');
 
 const client = new Client({
     intents: [
@@ -10,6 +11,7 @@ const client = new Client({
     ]
 });
 
+/* 
 client.on('ready', (c) => {
     console.log(`🤖 ${c.user.tag} is online`);
 }) // event listener checks if bot is ready
@@ -35,7 +37,7 @@ client.on('interactionCreate', (interaction) => {
     // console.log(interaction.commandName);
 })
 
-/* 
+
 client.on('messageCreate', (msg) => {
     if (msg.author.bot) {return;}
     if (msg.content === 'test'){
@@ -43,6 +45,8 @@ client.on('messageCreate', (msg) => {
     }; 
 }) 
     */
+
+eventHandler(client);
 
 client.login(
     process.env.TOKEN

@@ -122,24 +122,24 @@ void PIR() {
 }
 
 int IO() {
-  int comein = digitalRead(IR_Outdoor);
-  int goout = digitalRead(IR_Indoor);
+  int comein = digitalRead(IR_Outdoor); //Sensor outside door
+  int goout = digitalRead(IR_Indoor); // Sensor in kitchen
 
   if (comein == 0) {
     delay(100)
     if (goout == 0) {
       incomer = incomer++;
     }
-  }
+  } // increase incoming person if outdoor triggers first and indoor triggers 100ms later
 
   if (goout == 0) {
     delay(100)
     if (comein == 0) {
       outgoer = outgoer++;
-    }
+    } // increase outgoing person if indoor triggers first and outdoor triggers 100ms later
   }
 
-  current_ppl = incomer - outgoer;
+  current_ppl = incomer - outgoer; // current people in the room
 
   doc["IO"]["visitors"] = incomer;
   doc["IO"]["leavers"] = outgoer;
