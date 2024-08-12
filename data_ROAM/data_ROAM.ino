@@ -11,8 +11,8 @@
 StaticJsonDocument<500> doc
 RTC_DATA_ATTR int bootCount = 0;
 
-const char* ssid = "Imperial-WPA";     
-const char* password = "XXXX"; //to replace with personal password
+const char* ssid = "Three_004359";     
+const char* password = "XXXX"; //to replace with wifi password
 const char* server = "https://eu-west-2.aws.data.mongodb-api.com/app/data-hozcj/endpoint/data/v1";
  
 WiFiClient client;
